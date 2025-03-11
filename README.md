@@ -1,23 +1,11 @@
 # ReaPack Repository Template
 
-A template for GitHub-hosted ReaPack repositories with automated
-[reapack-index](https://github.com/cfillion/reapack-index)
-running from GitHub Actions.
+These scripts were written to add additional functionality to the digital audio workstation REAPER. As a sound designer with a concentration on audio for games, most of these scripts are tailored specifically towards a game audio workflow. If you'd like to check out some of the projects I've been working on, take a peek at [my website](https://www.andrewvscott.com/)!
 
-Replace the name of the repository in [index.xml](/index.xml) when using this template.
-This will be the name shown in ReaPack.
+All of the scripts in this repository can be imported directly in Reaper by using the [ReaPack REAPER extension](https://reapack.com/), the free scripts/packages download manager made by cfillion. I strongly recommend setting up ReaPack to install and use these scripts.
 
-```xml
-<index version="1" name="Name of your repository here">
-```
+# My GitHub ReaPack Installation
 
-Replace the contents of this file ([README.md](/README.md)).
-This will be the text shown when using ReaPack's "About this repository" feature.
+Copy and paste the following URL in Extensions > ReaPack > Import a Repository: https://raw.githubusercontent.com/Gla1wo/AVS-Reascripts/refs/heads/master/index.xml
 
-reapack-index looks for package files in subfolders.
-The folder tree represents the package categories shown in ReaPack.
-
-Each package file is expected to begin with a metadata header.
-See [Packaging Documentation](https://github.com/cfillion/reapack-index/wiki/Packaging-Documentation) on reapack-index's wiki.
-
-The URL to import in ReaPack is [https://github.com/`<your username>`/`<repository name>`/raw/master/index.xml](https://github.com/cfillion/reapack-repository-template/raw/master/index.xml).
+# Included Scripts
