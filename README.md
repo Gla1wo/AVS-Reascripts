@@ -1,4 +1,4 @@
-# ReaPack Repository Template
+# Andrew Scott's ReaScripts for [Reaper](https://www.reaper.fm/)
 
 These scripts were written to add additional functionality to the digital audio workstation REAPER. As a sound designer with a concentration on audio for games, most of these scripts are tailored specifically towards a game audio workflow. If you'd like to check out some of the projects I've been working on, take a peek at [my website](https://www.andrewvscott.com/)!
 
