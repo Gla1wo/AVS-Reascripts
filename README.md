@@ -9,3 +9,19 @@ All of the scripts in this repository can be imported directly in Reaper by usin
 Copy and paste the following URL in Extensions > ReaPack > Import a Repository: https://raw.githubusercontent.com/Gla1wo/AVS-Reascripts/refs/heads/master/index.xml
 
 # Included Scripts
+
+Playback
+AVS_Play skipping silence on selected track
+
+Items
+AVS_Match item length and fadeout to first item
+AVS_Match item length to first item
+AVS_Shift source content start to item left edge
+
+Envelopes
+AVS_Add envelope points to top and tail of first selected item
+AVS_Copy first item envelopes to all subsequent selected items
+
+Arrange
+AVS_Zoom to all items on selected track
+
