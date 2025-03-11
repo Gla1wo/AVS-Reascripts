@@ -30,10 +30,10 @@ Markdown
 Reaper
 }}}
 \par}
-{\pard \ql \f0 \sa180 \li0 \fi0 These scripts were written to add additional functionality to the digital audio workstation REAPER. As a sound designer with a concentration on audio for games, most of these scripts are tailored specifically towards a game audio workflow. If you'd like to check out some of the projects I've been working on, take a peek at {\field{\*\fldinst{HYPERLINK "https://www.andrewvscott.com/"}}{\fldrslt{\ul
+{\pard \ql \f0 \sa180 \li0 \fi0 These scripts were written to add additional functionality to the digital audio workstation REAPER. As a sound designer with a concentration on audio for games, most of these scripts are tailored specifically towards a game audio workflow. If you'd like to check out some of the projects I've been working on lately, take a look at {\field{\*\fldinst{HYPERLINK "https://www.andrewvscott.com/"}}{\fldrslt{\ul
 my website
 }}}
-!\par}
+.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 All of the scripts in this repository can be imported directly in Reaper by using the {\field{\*\fldinst{HYPERLINK "https://reapack.com/"}}{\fldrslt{\ul
 ReaPack REAPER extension
 }}}
