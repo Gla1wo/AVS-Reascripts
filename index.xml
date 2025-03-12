@@ -39,9 +39,12 @@ ReaPack REAPER extension
 {\pard \ql \f0 \sa180 \li0 \fi0 Playback\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Play skipping silence on selected track\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Items\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Match item length and fadeout to first item AVS_Match item length to first item AVS_Shift source content start to item left edge\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Match item length and fadeout to first item\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Match item length to first item\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Shift source content start to item left edge\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Envelopes\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Add envelope points to top and tail of first selected item AVS_Copy first item envelopes to all subsequent selected items\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Add envelope points to top and tail of first selected item\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Copy first item envelopes to all subsequent selected items\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Arrange\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Zoom to all items on selected track\par}
 }
