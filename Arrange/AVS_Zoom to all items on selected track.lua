@@ -12,7 +12,6 @@
 --
 -- @provides
 --  [main] .
---   Arrange/AVS_Zoom to all items on selected track.lua
 -- @link https://www.andrewvscott.com/
 -- @minimum_reaper_version 6.0
 
