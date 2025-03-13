@@ -11,8 +11,7 @@
 --   - Groups selected items by track and uses the first selected item as a reference.
 --   - Ignores items that are involved in crossfades.
 -- @provides
---   Items/AVS_Match item length and fadeout to first item.lua
---   [main] .lua
+--   [main] .
 -- @link https://www.andrewvscott.com/
 -- @minimum_reaper_version 6.0
 

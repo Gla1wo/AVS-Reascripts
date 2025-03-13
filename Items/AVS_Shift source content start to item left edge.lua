@@ -10,8 +10,7 @@
 --   - Does not modify item length or play rate.
 --   - Updates the REAPER interface to reflect changes.
 -- @provides
---   Items/AVS_Shift source content start to item left edge.lua
---   [main] .lua
+--   [main] .
 -- @link https://www.andrewvscott.com/
 -- @minimum_reaper_version 6.0
 

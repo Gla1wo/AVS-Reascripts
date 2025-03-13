@@ -11,7 +11,7 @@
 --   - Pastes the copied envelope points at the corresponding position in other selected items.
 --   - Works across all tracks containing envelopes.
 -- @provides
---   Envelopes/AVS_Copy first item envelopes to all subsequent selected items.lua
+--  [main] .
 -- @link https://www.andrewvscott.com/
 -- @minimum_reaper_version 6.0
 

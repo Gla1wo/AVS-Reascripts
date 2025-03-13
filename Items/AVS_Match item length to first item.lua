@@ -10,8 +10,7 @@
 --   - The first selected item is used as the reference for length.
 --   - All subsequent selected items will be adjusted to match the reference length.
 -- @provides
---   Items/AVS_Match item length to first item.lua
---   [main] .lua
+--   [main] .
 -- @link https://www.andrewvscott.com/
 -- @minimum_reaper_version 6.0
 

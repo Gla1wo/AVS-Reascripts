@@ -11,6 +11,7 @@
 --   - Adds an envelope point at the item's start and end.
 --   - Ensures envelope points are sorted and updates the arrangement.
 -- @provides
+--  [main] .
 --   Envelopes/AVS_Add envelope points to top and tail of first selected item.lua
 -- @link https://www.andrewvscott.com/
 -- @minimum_reaper_version 6.0
