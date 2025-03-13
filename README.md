@@ -15,6 +15,8 @@ Playback
 
 AVS_Play skipping silence on selected track
 
+AVS_Play through items on selected track skipping silence
+
 
 Items
 
