@@ -9,8 +9,8 @@
 --   - Resets the take's start offset to 0, aligning the source content with the item's left edge.
 --   - Does not modify item length or play rate.
 --   - Updates the REAPER interface to reflect changes.
---
 -- @provides
+--   Items/AVS_Shift source content start to item left edge.lua
 --   [main] .lua
 -- @link https://www.andrewvscott.com/
 -- @minimum_reaper_version 6.0

@@ -10,9 +10,8 @@
 --   - Finds all envelope points within the first selected item's time range.
 --   - Pastes the copied envelope points at the corresponding position in other selected items.
 --   - Works across all tracks containing envelopes.
---
 -- @provides
---   [main] .lua
+--   Envelopes/AVS_Copy first item envelopes to all subsequent selected items.lua
 -- @link https://www.andrewvscott.com/
 -- @minimum_reaper_version 6.0
 
