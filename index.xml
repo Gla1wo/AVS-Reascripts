@@ -1,5 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="AVS-Reascripts" commit="0ea640565bba855ac03d9436962f3852046c2e25">
+<index version="1" name="AVS-Reascripts" commit="f6d51bd0d6e70ca6dad20f9ca3c5e3270781ce59">
+  <category name="Envelopes">
+    <reapack name="AVS_Copy first item envelopes to all subsequent selected items.lua" type="script" desc="Copy and Paste Envelope Points from First Selected Item to Others">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 This script copies all envelope points from the first selected item and pastes them at the start of each subsequently selected item in REAPER.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Requires at least two selected media items.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Finds all envelope points within the first selected item's time range.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Pastes the copied envelope points at the corresponding position in other selected items.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Works across all tracks containing envelopes.\sa180\par}
+}
+]]></description>
+        <link rel="website">https://www.andrewvscott.com/</link>
+      </metadata>
+      <version name="1.0" author="AVS" time="2025-03-13T18:59:13Z">
+        <changelog><![CDATA[Initial release]]></changelog>
+        <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/f6d51bd0d6e70ca6dad20f9ca3c5e3270781ce59/Envelopes/AVS_Copy%20first%20item%20envelopes%20to%20all%20subsequent%20selected%20items.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="Items">
+    <reapack name="AVS_Match item length and fadeout to first item.lua" type="script" desc="Match Length and Fade-Out to First Selected Item on Each Track, Ignoring Crossfades">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 This script adjusts the length and fade-out of each selected media item on a given track to match the length and fade-out of the first selected item on that same track, while avoiding adjusting items involved in crossfades.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Requires at least two selected media items.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Groups selected items by track and uses the first selected item as a reference.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Ignores items that are involved in crossfades.\sa180\par}
+}
+]]></description>
+        <link rel="website">https://www.andrewvscott.com/</link>
+      </metadata>
+      <version name="1.0" author="AVS" time="2025-03-13T18:59:13Z">
+        <changelog><![CDATA[Initial release]]></changelog>
+        <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/f6d51bd0d6e70ca6dad20f9ca3c5e3270781ce59/Items/AVS_Match%20item%20length%20and%20fadeout%20to%20first%20item.lua</source>
+      </version>
+    </reapack>
+    <reapack name="AVS_Match item length to first item.lua" type="script" desc="Match Length of Selected Items to First Selected Item">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 This script adjusts the length of each selected media item after the first one to match the length of the first selected item in REAPER.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Requires at least two selected media items.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab The first selected item is used as the reference for length.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab All subsequent selected items will be adjusted to match the reference length.\sa180\par}
+}
+]]></description>
+        <link rel="website">https://www.andrewvscott.com/</link>
+      </metadata>
+      <version name="1.0" author="AVS" time="2025-03-13T18:59:13Z">
+        <changelog><![CDATA[Initial release]]></changelog>
+        <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/f6d51bd0d6e70ca6dad20f9ca3c5e3270781ce59/Items/AVS_Match%20item%20length%20to%20first%20item.lua</source>
+      </version>
+    </reapack>
+    <reapack name="AVS_Shift source content start to item left edge.lua" type="script" desc="Shift Source Content of Selected Items to Left Edge">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 This script shifts the start of the source content of selected items to their left edge without changing item bounds.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Works on selected media items (excluding MIDI).\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Resets the take's start offset to 0, aligning the source content with the item's left edge.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Does not modify item length or play rate.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Updates the REAPER interface to reflect changes.\sa180\par}
+}
+]]></description>
+        <link rel="website">https://www.andrewvscott.com/</link>
+      </metadata>
+      <version name="1.0" author="AVS" time="2025-03-13T18:59:13Z">
+        <changelog><![CDATA[Initial release]]></changelog>
+        <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/f6d51bd0d6e70ca6dad20f9ca3c5e3270781ce59/Items/AVS_Shift%20source%20content%20start%20to%20item%20left%20edge.lua</source>
+      </version>
+    </reapack>
+  </category>
   <category name="Playback">
     <reapack name="AVS_Play skipping silence on selected track.lua" type="script">
       <metadata>
