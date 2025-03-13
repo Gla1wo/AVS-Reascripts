@@ -33,7 +33,7 @@ my website
 ReaPack REAPER extension
 }}}
 , the free scripts/packages download manager made by cfillion. I strongly recommend setting up ReaPack to install and use these scripts.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 My GitHub ReaPack Installation\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 ReaPack Installation\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Copy and paste the following URL in Extensions > ReaPack > Import a Repository: https://raw.githubusercontent.com/Gla1wo/AVS-Reascripts/refs/heads/master/index.xml\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Included Scripts\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Playback\par}
