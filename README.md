@@ -4,7 +4,7 @@ These scripts were written to add additional functionality to the digital audio 
 
 All of the scripts in this repository can be imported directly in Reaper by using the [ReaPack REAPER extension](https://reapack.com/), the free scripts/packages download manager made by cfillion. I strongly recommend setting up ReaPack to install and use these scripts.
 
-# My GitHub ReaPack Installation
+# ReaPack Installation
 
 Copy and paste the following URL in Extensions > ReaPack > Import a Repository: https://raw.githubusercontent.com/Gla1wo/AVS-Reascripts/refs/heads/master/index.xml
 
