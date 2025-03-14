@@ -27,6 +27,8 @@ AVS_Match item length to first item
 
 AVS_Shift source content start to item left edge
 
+AVS_Edit cursor follows items when selecting or dragging bottom half
+
 
 Envelopes
 
@@ -41,3 +43,4 @@ Arrange
 
 AVS_Zoom to all items on selected track
 
+AVS_Prevent micro time selections, extending 5s
