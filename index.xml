@@ -224,6 +224,7 @@ ReaPack REAPER extension
 {\pard \ql \f0 \sa180 \li0 \fi0 Envelopes\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Add envelope points to top and tail of first selected item\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Copy first item envelopes to all subsequent selected items\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Add envelope points to top and tail of selected items\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Arrange\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Zoom to all items on selected track\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Prevent micro time selections, extending 5s\par}
