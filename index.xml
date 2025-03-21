@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="AVS-Reascripts" commit="c8dd8c32b6f75d99ad22dbe02c1ef3964ba4daa0">
+<index version="1" name="AVS-Reascripts" commit="eb84eff3e756bb991975a970ee09870bcca70fb6">
   <category name="Arrange">
+    <reapack name="AVS_Prevent micro time selections, extending 5s.lua" type="script" desc="Prevent micro time selections, extending 5s">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 This script extends the loop playback if the loop selection is less than 50 milliseconds. It adds 5 additional seconds of playback past the loop end point. It avoids creating a time selection when none exists.\par}
+}
+]]></description>
+        <link rel="website">https://www.andrewvscott.com/</link>
+      </metadata>
+      <version name="1.3" author="AVS" time="2025-03-14T21:30:19Z">
+        <changelog><![CDATA[- Fixed issue where an unwanted time selection was created at the start of the timeline when none existed.
+- Now only extends an existing time selection if it is shorter than 50ms.
+- Ensured compatibility with background execution.]]></changelog>
+        <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/eb84eff3e756bb991975a970ee09870bcca70fb6/Arrange/AVS_Prevent%20micro%20time%20selections,%20extending%205s.lua</source>
+      </version>
+    </reapack>
     <reapack name="AVS_Zoom to all items on selected track.lua" type="script" desc="Zoom to Show All Items on Selected Track">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
@@ -66,6 +84,26 @@
     </reapack>
   </category>
   <category name="Items">
+    <reapack name="AVS_Edit cursor follows items when selecting or dragging bottom half.lua" type="script" desc="Edit cursor follows items when selecting or dragging bottom half">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 This script moves the playhead to the start of the selected media item without changing the horizontal or vertical view in REAPER. It runs as a background toggleable action.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Detects left clicks on the bottom half of media items and moves the playhead to their start.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Restores the previous arrange and vertical scroll position after moving the playhead.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Runs in the background, continuously checking for selected items.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Supports toolbar toggling (on/off state).\sa180\par}
+}
+]]></description>
+        <link rel="website">https://www.andrewvscott.com/</link>
+      </metadata>
+      <version name="1.0" author="AVS" time="2025-03-14T21:30:19Z">
+        <changelog><![CDATA[Initial release]]></changelog>
+        <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/eb84eff3e756bb991975a970ee09870bcca70fb6/Items/AVS_Edit%20cursor%20follows%20items%20when%20selecting%20or%20dragging%20bottom%20half.lua</source>
+      </version>
+    </reapack>
     <reapack name="AVS_Match item length and fadeout to first item.lua" type="script" desc="Match Length and Fade-Out to First Selected Item on Each Track, Ignoring Crossfades">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
@@ -182,11 +220,13 @@ ReaPack REAPER extension
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Match item length and fadeout to first item\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Match item length to first item\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Shift source content start to item left edge\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Edit cursor follows items when selecting or dragging bottom half\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Envelopes\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Add envelope points to top and tail of first selected item\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Copy first item envelopes to all subsequent selected items\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Arrange\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Zoom to all items on selected track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Prevent micro time selections, extending 5s\par}
 }
 ]]></description>
   </metadata>
