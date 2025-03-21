@@ -37,6 +37,8 @@ AVS_Add envelope points to top and tail of first selected item
 
 AVS_Copy first item envelopes to all subsequent selected items
 
+AVS_Add envelope points to top and tail of selected items
+
 
 Arrange
 
