@@ -12,7 +12,7 @@
 --   - Ensures envelope points are sorted and updates the arrangement.
 --
 -- @provides
---   [main] .lua
+--   [main] .
 -- @link https://www.andrewvscott.com/
 -- @minimum_reaper_version 6.0
 
