@@ -39,6 +39,8 @@ AVS_Copy first item envelopes to all subsequent selected items
 
 AVS_Add envelope points to top and tail of selected items
 
+AVS_Convert envelopes under selected items to automation items
+
 
 Arrange
 
@@ -46,3 +48,9 @@ Arrange
 AVS_Zoom to all items on selected track
 
 AVS_Prevent micro time selections, extending 5s
+
+
+Modulation
+
+
+AVS_Enable envelope following for last touched fx parameter
