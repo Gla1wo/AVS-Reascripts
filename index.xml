@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="AVS-Reascripts" commit="386335a4da0ddcca63c396de723a1c493c300775">
+<index version="1" name="AVS-Reascripts" commit="537572acd1f7ef0bdcf946b23943e7c3b773839c">
   <category name="Arrange">
     <reapack name="AVS_Prevent micro time selections, extending 5s.lua" type="script" desc="Prevent micro time selections, extending 5s">
       <metadata>
@@ -81,6 +81,22 @@
       <version name="1.0" author="AVS" time="2025-03-21T23:15:00Z">
         <changelog><![CDATA[Initial release]]></changelog>
         <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/386335a4da0ddcca63c396de723a1c493c300775/Envelopes/AVS_Add%20envelope%20points%20to%20top%20and%20tail%20of%20selected%20items.lua</source>
+      </version>
+    </reapack>
+    <reapack name="AVS_Convert envelopes under selected items to automation items.lua" type="script" desc="Convert envelopes under selected items to automation items (full length + tail)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 For each selected media item, create an automation item on every track envelope that covers: \u8226 ? 0.5\u160 ?s before the item\u8217's start \u8226 ? The entire item length \u8226 ? Up to 0.5\u160 ?s before the next later item on that track (if any) \u8226 ? If there is {\b no} later item, the window extends through the last envelope point so post\u8209 ?item automation is preserved.\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.2" author="AVS" time="2025-04-25T00:16:27Z">
+        <changelog><![CDATA[v1.2 • “Next‑item” search now scans every track item (not just selected ones).
+      • When no later item exists, range ends at last envelope point on the lane.]]></changelog>
+        <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/537572acd1f7ef0bdcf946b23943e7c3b773839c/Envelopes/AVS_Convert%20envelopes%20under%20selected%20items%20to%20automation%20items.lua</source>
       </version>
     </reapack>
     <reapack name="AVS_Copy first item envelopes to all subsequent selected items.lua" type="script" desc="Copy and Paste Envelope Points from First Selected Item to Others">
@@ -184,6 +200,23 @@
       </version>
     </reapack>
   </category>
+  <category name="Modulation">
+    <reapack name="AVS_Enable envelope following for last touched fx parameter.lua" type="script" desc="Enable PM on selected tracks + main-input side-chain for last-touched param (-52 dB ➜ -21 dB)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \u8226 ? Touch any parameter, then run the script. \u8211- That parameter gets PM enabled, Audio-control (side-chain) on L+R, with min/max level window preset to -52 \u8594 ? -21 dB. \u8226 ? Every saved PM block on {\i selected tracks} is re-enabled too. \u8226 ? Ignores take-FX (GetLastTouchedFX can\u8217't see them). \u8226 ? REAPER \u8805 ? 6.73 required (TrackFX_SetNamedConfigParm).\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.1" author="AVS" time="2025-04-25T00:16:27Z">
+        <changelog><![CDATA[+ v1.1 – sets Audio-control Min dB = -52 and Max dB = -21]]></changelog>
+        <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/537572acd1f7ef0bdcf946b23943e7c3b773839c/Modulation/AVS_Enable%20envelope%20following%20for%20last%20touched%20fx%20parameter.lua</source>
+      </version>
+    </reapack>
+  </category>
   <category name="Playback">
     <reapack name="AVS_Play skipping silence on selected track.lua" type="script">
       <metadata>
@@ -246,9 +279,12 @@ ReaPack REAPER extension
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Add envelope points to top and tail of first selected item\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Copy first item envelopes to all subsequent selected items\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Add envelope points to top and tail of selected items\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Convert envelopes under selected items to automation items\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Arrange\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Zoom to all items on selected track\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Prevent micro time selections, extending 5s\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Modulation\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Enable envelope following for last touched fx parameter\par}
 }
 ]]></description>
   </metadata>
