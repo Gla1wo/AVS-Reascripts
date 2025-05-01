@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="AVS-Reascripts" commit="537572acd1f7ef0bdcf946b23943e7c3b773839c">
+<index version="1" name="AVS-Reascripts" commit="55dce50c493dc6cd238a55fd4be6cbee8bee14c0">
   <category name="Arrange">
     <reapack name="AVS_Prevent micro time selections, extending 5s.lua" type="script" desc="Prevent micro time selections, extending 5s">
       <metadata>
@@ -280,6 +280,7 @@ ReaPack REAPER extension
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Copy first item envelopes to all subsequent selected items\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Add envelope points to top and tail of selected items\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Convert envelopes under selected items to automation items\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Clear pitch envelope for selected items\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Arrange\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Zoom to all items on selected track\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Prevent micro time selections, extending 5s\par}
