@@ -13,7 +13,7 @@
 --   • Sorts envelopes, restores UI, and updates the arrange view  
 --
 -- @provides
---   [main] .lua
+--   [main] .
 -- @link https://www.andrewvscott.com/
 -- @minimum_reaper_version 6.0
 
