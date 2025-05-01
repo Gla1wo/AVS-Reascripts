@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="AVS-Reascripts" commit="55dce50c493dc6cd238a55fd4be6cbee8bee14c0">
+<index version="1" name="AVS-Reascripts" commit="2cd0c64309edc4cea235549b201981bfaf5baa41">
   <category name="Arrange">
     <reapack name="AVS_Prevent micro time selections, extending 5s.lua" type="script" desc="Prevent micro time selections, extending 5s">
       <metadata>
@@ -81,6 +81,25 @@
       <version name="1.0" author="AVS" time="2025-03-21T23:15:00Z">
         <changelog><![CDATA[Initial release]]></changelog>
         <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/386335a4da0ddcca63c396de723a1c493c300775/Envelopes/AVS_Add%20envelope%20points%20to%20top%20and%20tail%20of%20selected%20items.lua</source>
+      </version>
+    </reapack>
+    <reapack name="AVS_Clear pitch envelope for selected items.lua" type="script" desc="Remove All Pitch Envelope Points from Selected Items">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Removes every pitch-envelope point from every take of each selected media item. \u8226 ? Iterates through all selected items and all of their takes\line \u8226 ? If a take contains a \u8220"Pitch\u8221" envelope, deletes the entire envelope point range\line \u8226 ? Sorts envelopes, restores UI, and updates the arrange view\par}
+}
+]]></description>
+        <link rel="website">https://www.andrewvscott.com/</link>
+      </metadata>
+      <version name="1.1" author="AVS" time="2025-05-01T16:48:53Z">
+        <changelog><![CDATA[# Fixed crash: replaced faulty point-deletion loop (used GetEnvelopePointByTime incorrectly)
+  with a single DeleteEnvelopePointRange over the full envelope span
+# Added undo block and PreventUIRefresh for performance/safety
+# Minor code clean-up and extra nil-checks]]></changelog>
+        <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/2cd0c64309edc4cea235549b201981bfaf5baa41/Envelopes/AVS_Clear%20pitch%20envelope%20for%20selected%20items.lua</source>
       </version>
     </reapack>
     <reapack name="AVS_Convert envelopes under selected items to automation items.lua" type="script" desc="Convert envelopes under selected items to automation items (full length + tail)">
