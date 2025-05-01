@@ -1,6 +1,6 @@
 -- @description Enable PM on selected tracks + main-input side-chain for last-touched param (-52 dB ➜ -21 dB)
 -- @version 1.1
--- @author AVS
+-- @author AVS + MPL
 -- @changelog
 --   + v1.1 – sets Audio-control Min dB = -52 and Max dB = -21
 -- @about

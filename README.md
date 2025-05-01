@@ -41,6 +41,8 @@ AVS_Add envelope points to top and tail of selected items
 
 AVS_Convert envelopes under selected items to automation items
 
+AVS_Clear pitch envelope for selected items
+
 
 Arrange
 
