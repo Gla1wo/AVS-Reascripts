@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="AVS-Reascripts" commit="2cd0c64309edc4cea235549b201981bfaf5baa41">
+<index version="1" name="AVS-Reascripts" commit="64c1886ea2c27672a441a0f9b1920f7f393c7706">
   <category name="Arrange">
+    <reapack name="AVS_Move to random item on selected track.lua" type="script" desc="Move playback instantly to a random item on the selected track">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Picks a random media item on the first selected track and teleports the edit/play cursor there.\line \u8226 ? Works whether you\u8217're stopped or playing.\line \u8226 ? Centers the arrange view on the new spot.\line \u8226 ? Gracefully aborts if nothing\u8217's selected or the track is empty.\par}
+}
+]]></description>
+        <link rel="website">https://www.andrewvscott.com/</link>
+      </metadata>
+      <version name="1.1" author="AVS" time="2025-06-26T20:51:20Z">
+        <changelog><![CDATA[+ v1.1  • Jump is now truly instant during playback by pausing,
+          repositioning, and resuming instead of smooth-seeking.
++        • Dropped UI-refresh hold (no need anymore).]]></changelog>
+        <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/64c1886ea2c27672a441a0f9b1920f7f393c7706/Arrange/AVS_Move%20to%20random%20item%20on%20selected%20track.lua</source>
+      </version>
+    </reapack>
     <reapack name="AVS_Prevent micro time selections, extending 5s.lua" type="script" desc="Prevent micro time selections, extending 5s">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
@@ -140,6 +158,36 @@
     </reapack>
   </category>
   <category name="Items">
+    <reapack name="AVS_Adjust item rate by 0.1 maintaining overlaps (mousewheel).lua" type="script" desc="Adjust item rate with mouse-wheel (±0.1) while preserving overlaps/crossfades">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Assign this to a mouse-wheel modifier (e.g. Alt-wheel on \u8220"Media item\u8221" context). Wheel-up speeds selected items by +0.1, wheel-down slows by \u8211-0.1. Items are stretched/shrunk and overlaps re-aligned so audio still meets in the same spot.\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.2" author="AVS" time="2025-06-26T20:51:20Z">
+        <changelog><![CDATA[+1.2  • Wheel delta uses 7-th return from get_action_context()]]></changelog>
+        <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/64c1886ea2c27672a441a0f9b1920f7f393c7706/Items/AVS_Adjust%20item%20rate%20by%200.1%20maintaining%20overlaps%20(mousewheel).lua</source>
+      </version>
+    </reapack>
+    <reapack name="AVS_Duplicate selected items + the tracks they're on.lua" type="script" desc="Duplicate selected items along with their track (excluding un-selected items)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \u8226 ? Looks at every selected media item in the project.\line \u8226 ? For each track that has \u8805 ? 1 selected item: \u8211- Inserts a brand-new track just below it and copies all track settings (FX, routing, envelopes, color, name, etc.).\line \u8211- Duplicates the selected items onto that new track, preserving positions, takes, fades, stretch markers, everything.\line \u8211- Leaves un-selected items on the source track untouched.\line \u8226 ? Works with multiple tracks of selected items at once.\line \u8226 ? Requires REAPER 6.0+\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="AVS" time="2025-06-26T20:51:20Z">
+        <changelog><![CDATA[Initial release]]></changelog>
+        <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/64c1886ea2c27672a441a0f9b1920f7f393c7706/Items/AVS_Duplicate%20selected%20items%20+%20the%20tracks%20they're%20on.lua</source>
+      </version>
+    </reapack>
     <reapack name="AVS_Edit cursor follows items when selecting or dragging bottom half.lua" type="script" desc="Edit cursor follows items when selecting or dragging bottom half">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
@@ -158,6 +206,21 @@
       <version name="1.0" author="AVS" time="2025-03-14T21:30:19Z">
         <changelog><![CDATA[Initial release]]></changelog>
         <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/eb84eff3e756bb991975a970ee09870bcca70fb6/Items/AVS_Edit%20cursor%20follows%20items%20when%20selecting%20or%20dragging%20bottom%20half.lua</source>
+      </version>
+    </reapack>
+    <reapack name="AVS_Expand item edge closest to mouse cursor to source content.lua" type="script" desc="Extend nearest item edge (under mouse) to the source bounds">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \u8226 ? Requires the SWS Extension (for BR_* mouse helpers).\line \u8226 ? Works on the media item located directly under the mouse cursor.\line \u8226 ? Chooses the closest edge to the cursor (left or right)\line \u8211- If the left edge is closer it rolls the item start back to 0 sec of the source.\line \u8211- If the right edge is closer it lengthens the item to the end of the source.\line \u8226 ? Preserves take play-rate when calculating the remaining length.\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="AVS" time="2025-06-26T20:51:20Z">
+        <changelog><![CDATA[+ Initial release]]></changelog>
+        <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/64c1886ea2c27672a441a0f9b1920f7f393c7706/Items/AVS_Expand%20item%20edge%20closest%20to%20mouse%20cursor%20to%20source%20content.lua</source>
       </version>
     </reapack>
     <reapack name="AVS_Match item length and fadeout to first item.lua" type="script" desc="Match Length and Fade-Out to First Selected Item on Each Track, Ignoring Crossfades">
@@ -290,6 +353,10 @@ ReaPack REAPER extension
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Play skipping silence on selected track\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Play through items on selected track skipping silence\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Items\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Adjust item rate by 0.1 maintaining overlaps (mousewheel)\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Duplicate selected items + the tracks they're on\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Expand item edge closest to mouse cursor to source content\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Toggle mute selected items - otherwise selected track\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Match item length and fadeout to first item\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Match item length to first item\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Shift source content start to item left edge\par}
@@ -301,6 +368,7 @@ ReaPack REAPER extension
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Convert envelopes under selected items to automation items\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Clear pitch envelope for selected items\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Arrange\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Move to random item on selected track\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Zoom to all items on selected track\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Prevent micro time selections, extending 5s\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Modulation\par}
