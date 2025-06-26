@@ -2,6 +2,8 @@
 -- @version 1.0
 -- @author AVS
 -- @changelog Initial release
+-- @provides
+--   [main] .
 -- @about
 --   • Looks at every selected media item in the project.  
 --   • For each track that has ≥ 1 selected item:

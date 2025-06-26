@@ -7,6 +7,8 @@
 --   Assign this to a mouse-wheel modifier (e.g. Alt-wheel on “Media item” context).
 --   Wheel-up speeds selected items by +0.1, wheel-down slows by –0.1.
 --   Items are stretched/shrunk and overlaps re-aligned so audio still meets in the same spot.
+-- @provides
+--   [main] .
 
 ---------------------------------------------------------------------------
 -- helpers
