@@ -2,15 +2,15 @@
 -- @version 1.1
 -- @author AVS
 -- @changelog
---   + v1.1  • Jump is now truly instant during playback by pausing,
+--   v1.1  - Jump is now truly instant during playback by pausing,
 --             repositioning, and resuming instead of smooth-seeking.
---   +        • Dropped UI-refresh hold (no need anymore).
+--          - Dropped UI-refresh hold (no need anymore).
 -- @about
 --   Picks a random media item on the first selected track and
 --   teleports the edit/play cursor there.  
---   • Works whether you’re stopped or playing.  
---   • Centers the arrange view on the new spot.  
---   • Gracefully aborts if nothing’s selected or the track is empty.
+--   - Works whether you’re stopped or playing.  
+--   - Centers the arrange view on the new spot.  
+--   - Gracefully aborts if nothing’s selected or the track is empty.
 --
 -- @provides
 --   [main] .

@@ -2,7 +2,7 @@
 -- @version 1.2
 -- @author AVS
 -- @changelog
---   +1.2  • Wheel delta uses 7-th return from get_action_context()
+--   +1.2  - Wheel delta uses 7-th return from get_action_context()
 -- @about
 --   Assign this to a mouse-wheel modifier (e.g. Alt-wheel on “Media item” context).
 --   Wheel-up speeds selected items by +0.1, wheel-down slows by –0.1.
