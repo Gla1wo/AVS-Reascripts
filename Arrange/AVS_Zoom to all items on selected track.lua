@@ -20,7 +20,7 @@ function main()
     -- Get the number of selected tracks (expecting at least one)
     local selectedTrackCount = reaper.CountSelectedTracks(0)
     if selectedTrackCount == 0 then
-        reaper.ShowMessageBox("No track selected.", "Error", 0)
+        --reaper.ShowMessageBox("No track selected.", "Error", 0)
         return
     end
 
@@ -47,7 +47,7 @@ function main()
 
     -- Check if we found any items
     if earliestStart == math.huge or latestEnd == -math.huge then
-        reaper.ShowMessageBox("No items found on the selected track.", "Error", 0)
+        --reaper.ShowMessageBox("No items found on the selected track.", "Error", 0)
         return
     end
 

@@ -21,6 +21,14 @@ AVS_Play through items on selected track skipping silence
 Items
 
 
+AVS_Adjust item rate by 0.1 maintaining overlaps (mousewheel)
+
+AVS_Duplicate selected items + the tracks they're on
+
+AVS_Expand item edge closest to mouse cursor to source content
+
+AVS_Toggle mute selected items - otherwise selected track
+
 AVS_Match item length and fadeout to first item
 
 AVS_Match item length to first item
@@ -46,6 +54,8 @@ AVS_Clear pitch envelope for selected items
 
 Arrange
 
+
+AVS_Move to random item on selected track
 
 AVS_Zoom to all items on selected track
 
