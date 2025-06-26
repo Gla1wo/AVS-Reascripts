@@ -15,7 +15,6 @@
 -- @provides
 --   [main] .
 -- @link https://www.andrewvscott.com/
--- @minimum_reaper_version 6.0
 
 ------------------------------------------------
 -- helpers
