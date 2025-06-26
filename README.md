@@ -66,3 +66,4 @@ Modulation
 
 
 AVS_Enable envelope following for last touched fx parameter
+
