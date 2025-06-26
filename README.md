@@ -23,7 +23,7 @@ Items
 
 AVS_Adjust item rate by 0.1 maintaining overlaps (mousewheel)
 
-AVS_Duplicate selected items + the tracks they're on
+AVS_Duplicate selected items and their tracks
 
 AVS_Expand item edge closest to mouse cursor to source content
 
