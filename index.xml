@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="AVS-Reascripts" commit="bfed3fdb41c7bb242c35c1cfc754d7d739220823">
+<index version="1" name="AVS-Reascripts" commit="b78322b5fcd73ac8dd8d7bafc1dcb331c5697c15">
   <category name="Arrange">
     <reapack name="AVS_Move to random item on selected track.lua" type="script" desc="Move playback instantly to a random item on the selected track">
       <metadata>
@@ -161,7 +161,7 @@
     </reapack>
   </category>
   <category name="Items">
-    <reapack name="AVS_Adjust item rate by 0.1 maintaining overlaps (mousewheel).lua" type="script" desc="Adjust item rate with mouse-wheel (±0.1) while preserving overlaps/crossfades">
+    <reapack name="AVS_Adjust item rate by 0.1 maintaining overlaps (mousewheel).lua" type="script" desc="Adjust item rate with mouse-wheel (0.1) while preserving overlaps/crossfades">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
