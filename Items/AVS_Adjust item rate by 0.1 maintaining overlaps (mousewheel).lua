@@ -1,4 +1,4 @@
--- @description Adjust item rate with mouse-wheel (±0.1) while preserving overlaps/crossfades
+-- @description Adjust item rate with mouse-wheel (0.1) while preserving overlaps/crossfades
 -- @version 1.2
 -- @author AVS
 -- @changelog
