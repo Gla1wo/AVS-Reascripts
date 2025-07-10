@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="AVS-Reascripts" commit="61ff47a86a67e97b30823418d06f22ecf04432ee">
+<index version="1" name="AVS-Reascripts" commit="bfed3fdb41c7bb242c35c1cfc754d7d739220823">
   <category name="Arrange">
     <reapack name="AVS_Move to random item on selected track.lua" type="script" desc="Move playback instantly to a random item on the selected track">
       <metadata>
@@ -7,7 +7,10 @@
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 Picks a random media item on the first selected track and teleports the edit/play cursor there.\line \u8226 ? Works whether you\u8217're stopped or playing.\line \u8226 ? Centers the arrange view on the new spot.\line \u8226 ? Gracefully aborts if nothing\u8217's selected or the track is empty.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Picks a random media item on the first selected track and teleports the edit/play cursor there.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Works whether you\u8217're stopped or playing.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Centers the arrange view on the new spot.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Gracefully aborts if nothing\u8217's selected or the track is empty.\sa180\par}
 }
 ]]></description>
         <link rel="website">https://www.andrewvscott.com/</link>
