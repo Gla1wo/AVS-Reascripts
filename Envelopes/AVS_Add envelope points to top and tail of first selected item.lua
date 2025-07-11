@@ -1,75 +1,76 @@
--- @description Add Envelope Points at Start and End of First Selected Item
--- @version 1.0
+-- @description Add Envelope Points at Start and End of First Selected Item (all track envelopes)
+-- @version 1.1
 -- @author AVS
--- @changelog Initial release
+-- @changelog
+--   v1.1 • Now processes every track envelope lane under the first selected item, not just the first
 -- @about
---   This script adds envelope points at the start and end of the first selected media item in REAPER.
+--   Adds an envelope point at the start and end of the first selected media item
+--   for *every* envelope on that item’s track (volume, pan, FX params, etc.).
 --
---   - Retrieves the first selected media item.
---   - Identifies the first visible envelope for the item's track.
---   - Finds the last envelope point value within the item's time range.
---   - Adds an envelope point at the item's start and end.
---   - Ensures envelope points are sorted and updates the arrangement.
+--   • Detects the first selected item and its time span.
+--   • For each envelope found:
+--       – Reads the envelope value at the item’s start and at (or just before) its end.
+--       – Inserts points carrying those values at both boundaries.
+--   • Sorts points, refreshes the UI, and wraps everything in an undo block.
+--
 -- @provides
---  [main] .
+--   [main] .
 -- @link https://www.andrewvscott.com/
 -- @minimum_reaper_version 6.0
 
+------------------------------------------------
+-- helpers
+------------------------------------------------
+local function get_last_envelope_value_in_range(env, start_time, end_time)
+  local val = nil
+  local cnt = reaper.CountEnvelopePoints(env)
+  for i = 0, cnt - 1 do
+    local _, pt_time, pt_val = reaper.GetEnvelopePoint(env, i)
+    if pt_time >= start_time and pt_time <= end_time then
+      val = pt_val                              -- keep updating until we step past end_time
+    elseif pt_time > end_time then
+      break
+    end
+  end
+  return val
+end
 
--- Get the first selected media item
+local function add_two_points(env, t_start, t_end)
+  -- read values
+  local _, start_val = reaper.Envelope_Evaluate(env, t_start, 0, 0)
+  local last_val     = get_last_envelope_value_in_range(env, t_start, t_end)
+  if not last_val then
+    local _, v = reaper.Envelope_Evaluate(env, t_end, 0, 0)
+    last_val = v
+  end
+
+  -- insert
+  reaper.InsertEnvelopePoint(env, t_start, start_val, 0, 0, false, true)
+  reaper.InsertEnvelopePoint(env, t_end,   last_val,  0, 0, false, true)
+
+  reaper.Envelope_SortPoints(env)
+end
+
+------------------------------------------------
+-- main
+------------------------------------------------
 local item = reaper.GetSelectedMediaItem(0, 0)
 if not item then return end
 
--- Get the item's position and length
-local item_pos = reaper.GetMediaItemInfo_Value(item, "D_POSITION")
-local item_len = reaper.GetMediaItemInfo_Value(item, "D_LENGTH")
-local item_end = item_pos + item_len
+local item_pos  = reaper.GetMediaItemInfo_Value(item, "D_POSITION")
+local item_end  = item_pos + reaper.GetMediaItemInfo_Value(item, "D_LENGTH")
+local track     = reaper.GetMediaItem_Track(item)
+local env_cnt   = reaper.CountTrackEnvelopes(track)
+if env_cnt == 0 then return end
 
--- Get the first visible envelope for the track of the selected item
-local track = reaper.GetMediaItem_Track(item)
-local envelope = reaper.GetTrackEnvelope(track, 0) -- 0 = first envelope
-if not envelope then return end
+reaper.PreventUIRefresh(1)
+reaper.Undo_BeginBlock()
 
--- Function to find the value of the last envelope point within the item's time range
-local function get_last_envelope_point_value(env, start_time, end_time)
-    local last_point_value = nil
-    local num_points = reaper.CountEnvelopePoints(env)
-
-    -- Iterate through all envelope points
-    for i = 0, num_points - 1 do
-        local retval, time, value, shape, tension, selected = reaper.GetEnvelopePoint(env, i)
-        -- Check if the point is within the item's time range
-        if time >= start_time and time <= end_time then
-            last_point_value = value -- Update the last point value
-        elseif time > end_time then
-            break -- Stop iterating once we're past the item's end time
-        end
-    end
-
-    return last_point_value
+for i = 0, env_cnt - 1 do
+  local env = reaper.GetTrackEnvelope(track, i)
+  if env then add_two_points(env, item_pos, item_end) end
 end
 
--- Get the value of the last envelope point within the item's time range
-local last_point_value = get_last_envelope_point_value(envelope, item_pos, item_end)
-
--- If no point exists within the item's time range, evaluate the envelope at the end time
-if not last_point_value then
-    local retval, value = reaper.Envelope_Evaluate(envelope, item_end, 0, 0)
-    last_point_value = value
-end
-
--- Evaluate the envelope at the start of the item
-local retval, start_value = reaper.Envelope_Evaluate(envelope, item_pos, 0, 0)
-
--- Function to add an envelope point at a specific time with a specific value
-local function add_envelope_point_at_time(env, time, value)
-    reaper.InsertEnvelopePoint(env, time, value, 0, 0, false, true)
-end
-
--- Add points at the beginning and end of the item
-add_envelope_point_at_time(envelope, item_pos, start_value) -- Start of the item
-add_envelope_point_at_time(envelope, item_end, last_point_value) -- End of the item
-
--- Sort and update the envelope
-reaper.Envelope_SortPoints(envelope)
+reaper.Undo_EndBlock("Add envelope points (all envelopes) at item bounds", -1)
 reaper.UpdateArrange()
+reaper.PreventUIRefresh(-1)

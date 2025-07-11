@@ -4,6 +4,8 @@
 -- @changelog
 --   v1.2 • “Next‑item” search now scans every track item (not just selected ones).
 --         • When no later item exists, range ends at last envelope point on the lane.
+-- @provides
+--   [main] .
 -- @about
 --   For each selected media item, create an automation item on every track envelope
 --   that covers:

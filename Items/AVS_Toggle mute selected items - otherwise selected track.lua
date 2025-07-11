@@ -1,15 +1,15 @@
 --[[
- @description Toggle Mute on Selected Items or Selected Tracks
-  Toggles mute state: 
-  - If media items are selected, toggles mute on those items.
-  - If no items are selected and tracks are selected, toggles mute on those tracks.
-  - If nothing is selected, does nothing.
- @version 1.1
- @author AVS
-@changelog
- Initial release
-@provides
-  [main] .
+-- @description Toggle Mute on Selected Items or Selected Tracks
+--  Toggles mute state: 
+--  - If media items are selected, toggles mute on those items.
+--  - If no items are selected and tracks are selected, toggles mute on those tracks.
+--  - If nothing is selected, does nothing.
+-- @version 1.1
+-- @author AVS
+-- @changelog
+-- Initial release
+-- @provides
+--  [main] .
 --]]
 
 reaper.Undo_BeginBlock()
