@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="AVS-Reascripts" commit="f5a0a7002add80096f8b1487cdfc6be281b6b672">
+<index version="1" name="AVS-Reascripts" commit="ac935f18aaf7ec066969836a9202eedc57a78e2f">
   <category name="Arrange">
     <reapack name="AVS_Move to random item on selected track.lua" type="script" desc="Move playback instantly to a random item on the selected track">
       <metadata>
@@ -284,6 +284,24 @@
       <version name="1.0" author="AVS" time="2025-03-13T18:59:13Z">
         <changelog><![CDATA[Initial release]]></changelog>
         <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/f6d51bd0d6e70ca6dad20f9ca3c5e3270781ce59/Items/AVS_Shift%20source%20content%20start%20to%20item%20left%20edge.lua</source>
+      </version>
+    </reapack>
+    <reapack name="AVS_Toggle mute selected items - otherwise selected track.lua" type="script" desc="Toggle Mute on Selected Items or Selected Tracks">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Toggles mute state:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab If media items are selected, toggles mute on those items.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab If no items are selected and tracks are selected, toggles mute on those tracks.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab If nothing is selected, does nothing.\sa180\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.1" author="AVS" time="2025-07-12T21:35:40Z">
+        <changelog><![CDATA[Initial release]]></changelog>
+        <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/ac935f18aaf7ec066969836a9202eedc57a78e2f/Items/AVS_Toggle%20mute%20selected%20items%20-%20otherwise%20selected%20track.lua</source>
       </version>
     </reapack>
   </category>
