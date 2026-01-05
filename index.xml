@@ -396,10 +396,10 @@ ReaPack REAPER extension
 {\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 ReaPack Installation\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Copy and paste the following URL in Extensions > ReaPack > Import a Repository: https://raw.githubusercontent.com/Gla1wo/AVS-Reascripts/refs/heads/master/index.xml\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Included Scripts\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 {\i Playback}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Playback}\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Play skipping silence on selected track\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Play through items on selected track skipping silence\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 {\i Items}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Items}\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Adjust item rate by 0.1 maintaining overlaps (mousewheel)\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Duplicate selected items and their tracks\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Expand item edge closest to mouse cursor to source content\par}
@@ -408,19 +408,19 @@ ReaPack REAPER extension
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Match item length to first item\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Shift source content start to item left edge\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Edit cursor follows items when selecting or dragging bottom half\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 {\i Envelopes}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Envelopes}\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Add envelope points to top and tail of first selected item\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Copy first item envelopes to all subsequent selected items\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Add envelope points to top and tail of selected items\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Convert envelopes under selected items to automation items\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Clear pitch envelope for selected items\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 {\i Arrange}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Arrange}\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Move to random item on selected track\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Zoom to all items on selected track\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Prevent micro time selections, extending 5s\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 {\i Modulation}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Modulation}\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Enable envelope following for last touched fx parameter\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 {\i Attenuator}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Attenuator}\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Attenuator\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Attenuator_Editor\par}
 }
