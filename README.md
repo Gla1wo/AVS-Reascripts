@@ -10,7 +10,7 @@ Copy and paste the following URL in Extensions > ReaPack > Import a Repository: 
 
 # Included Scripts
 
-Playback
+*Playback*
 
 
 AVS_Play skipping silence on selected track
@@ -18,7 +18,7 @@ AVS_Play skipping silence on selected track
 AVS_Play through items on selected track skipping silence
 
 
-Items
+*Items*
 
 
 AVS_Adjust item rate by 0.1 maintaining overlaps (mousewheel)
@@ -38,7 +38,7 @@ AVS_Shift source content start to item left edge
 AVS_Edit cursor follows items when selecting or dragging bottom half
 
 
-Envelopes
+*Envelopes*
 
 
 AVS_Add envelope points to top and tail of first selected item
@@ -52,7 +52,7 @@ AVS_Convert envelopes under selected items to automation items
 AVS_Clear pitch envelope for selected items
 
 
-Arrange
+*Arrange*
 
 
 AVS_Move to random item on selected track
@@ -62,8 +62,13 @@ AVS_Zoom to all items on selected track
 AVS_Prevent micro time selections, extending 5s
 
 
-Modulation
+*Modulation*
 
 
 AVS_Enable envelope following for last touched fx parameter
 
+*Attenuator*
+
+AVS_Attenuator
+
+AVS_Attenuator_Editor

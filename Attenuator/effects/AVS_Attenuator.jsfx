@@ -1,0 +1,293 @@
+desc: AVS_Attenuator - Distance-Based Spatial DSP
+author: AVS
+version: 1.3
+tags: spatial audio attenuation game-audio
+about:
+  # AVS_Attenuator
+
+  Distance-based attenuation processor for game audio prototyping.
+  Receives parameters from companion Lua UI via gmem shared memory.
+
+  Parameters:
+  - Volume attenuation (dB)
+  - High-pass filter cutoff (Hz)
+  - Low-pass filter cutoff (Hz)
+  - Stereo spread (%)
+  - Custom 1-8: Link slots for driving arbitrary FX parameters via REAPER parameter linking
+
+  Can also be controlled manually via sliders when UI is not running.
+
+// ============================================================================
+// GMEM COMMUNICATION PROTOCOL
+// ============================================================================
+// Namespace: attenuator_shared
+// Index 0: Volume (dB), range -96 to +12
+// Index 1: HPF cutoff (Hz), range 20 to 20000
+// Index 2: LPF cutoff (Hz), range 20 to 20000
+// Index 3: Spread (%), range 0 to 100
+// Index 4: Dirty flag (0 or 1) - Lua sets to 1, JSFX clears after reading
+// Index 5: Distance (0-100 normalized) - JSFX writes, Lua reads
+// Index 6: Distance dirty flag - JSFX sets to 1, Lua clears after reading
+// ============================================================================
+
+options:gmem=attenuator_shared
+options:no_undo
+
+// Sliders for manual control (when Lua UI is not running)
+// Note: HPF/LPF sliders receive normalized 0-1 values from Lua UI
+// and are converted to Hz in @slider using log scale
+slider1:0<-96,12,0.1>Volume (dB)
+slider2:0<0,1,0.001>High-Pass Cutoff
+slider3:1<0,1,0.001>Low-Pass Cutoff
+slider4:100<0,100,1>Stereo Spread (%)
+slider5:0<0,100,0.1>Distance (automatable)
+
+// Custom parameter link slots (normalized 0-1)
+// These sliders exist purely as control sources for REAPER parameter linking.
+// The Lua editor creates links FROM these sliders TO arbitrary FX parameters.
+// Slider indices 6-13 correspond to Custom 1-8.
+slider6:0<0,1,0.001>Custom 1
+slider7:0<0,1,0.001>Custom 2
+slider8:0<0,1,0.001>Custom 3
+slider9:0<0,1,0.001>Custom 4
+slider10:0<0,1,0.001>Custom 5
+slider11:0<0,1,0.001>Custom 6
+slider12:0<0,1,0.001>Custom 7
+slider13:0<0,1,0.001>Custom 8
+
+@init
+// ============================================================================
+// CONSTANTS
+// ============================================================================
+// Conversion constants
+DB2LOG = 0.11512925464970228420089957273422;  // log(10)/20 for dB to linear
+LOG2DB = 8.6858896380650365530225783783321;   // 20/log(10) for linear to dB
+
+// Math constants
+PI = 3.14159265358979323846;
+TWO_PI = 6.28318530717958647692;
+
+// Frequency range constants for HPF/LPF
+FREQ_MIN = 20;
+FREQ_MAX = 20000;
+FREQ_RATIO = FREQ_MAX / FREQ_MIN;  // 1000
+
+// gmem indices
+GMEM_VOLUME = 0;
+GMEM_HPF = 1;
+GMEM_LPF = 2;
+GMEM_SPREAD = 3;
+GMEM_DIRTY = 4;
+GMEM_DISTANCE = 5;
+GMEM_DISTANCE_DIRTY = 6;
+
+// ============================================================================
+// STATE VARIABLES
+// ============================================================================
+// Target parameters (from sliders or gmem)
+target_volume_db = 0;
+target_hpf_hz = 20;
+target_lpf_hz = 20000;
+target_spread_pct = 100;
+
+// Smoothed parameters (for click-free changes)
+smooth_volume_db = 0;
+smooth_hpf_hz = 20;
+smooth_lpf_hz = 20000;
+smooth_spread_pct = 100;
+
+// Smoothing coefficient (~2ms at 44.1kHz, adjusts with sample rate)
+// Time constant = 1 / (smooth_coeff * srate) seconds
+smooth_coeff = 0.0001;
+
+// Filter state variables (1-pole IIR)
+// High-pass filter states
+hpf_z1_l = 0;
+hpf_z1_r = 0;
+
+// Low-pass filter states
+lpf_z1_l = 0;
+lpf_z1_r = 0;
+
+// Filter coefficients (computed in @block)
+hpf_alpha = 0;
+lpf_alpha = 0;
+
+// Dirty flag tracking
+last_dirty = 0;
+
+// Distance tracking
+last_distance = 0;
+distance_from_lua = 0;  // Flag to prevent echo when Lua updates distance
+
+// Initialize targets from sliders (convert normalized HPF/LPF to Hz)
+target_volume_db = slider1;
+target_hpf_hz = FREQ_MIN * pow(FREQ_RATIO, slider2);
+target_lpf_hz = FREQ_MIN * pow(FREQ_RATIO, slider3);
+target_spread_pct = slider4;
+last_distance = slider5;
+
+// Initialize smoothed values to match targets (no initial ramp)
+smooth_volume_db = target_volume_db;
+smooth_hpf_hz = target_hpf_hz;
+smooth_lpf_hz = target_lpf_hz;
+smooth_spread_pct = target_spread_pct;
+
+@slider
+// ============================================================================
+// SLIDER HANDLER
+// ============================================================================
+// Called when user adjusts sliders manually or via TrackFX_SetParam
+// HPF/LPF sliders are normalized 0-1, convert to Hz using log scale:
+// hz = FREQ_MIN * FREQ_RATIO^normalized = 20 * 1000^normalized
+target_volume_db = slider1;
+target_hpf_hz = FREQ_MIN * pow(FREQ_RATIO, slider2);  // 0->20Hz, 0.5->632Hz, 1->20000Hz
+target_lpf_hz = FREQ_MIN * pow(FREQ_RATIO, slider3);  // 0->20Hz, 0.5->632Hz, 1->20000Hz
+target_spread_pct = slider4;
+
+// Distance slider changed - notify Lua script via gmem
+// Only write if this wasn't triggered by Lua updating the slider
+slider5 != last_distance && distance_from_lua == 0 ? (
+  gmem[GMEM_DISTANCE] = slider5;
+  gmem[GMEM_DISTANCE_DIRTY] = 1;
+  last_distance = slider5;
+);
+distance_from_lua = 0;  // Reset flag
+
+@block
+// ============================================================================
+// BLOCK PROCESSING
+// ============================================================================
+// Check gmem for updates from Lua script (runs once per audio block)
+
+gmem_dirty = gmem[GMEM_DIRTY];
+
+// If dirty flag is set, read new values from gmem
+gmem_dirty != last_dirty && gmem_dirty == 1 ? (
+  // Read parameters from gmem (these are raw values: dB, Hz, Hz, %)
+  target_volume_db = gmem[GMEM_VOLUME];
+  target_hpf_hz = gmem[GMEM_HPF];
+  target_lpf_hz = gmem[GMEM_LPF];
+  target_spread_pct = gmem[GMEM_SPREAD];
+
+  // Clamp to valid ranges
+  target_volume_db = max(-96, min(12, target_volume_db));
+  target_hpf_hz = max(FREQ_MIN, min(FREQ_MAX, target_hpf_hz));
+  target_lpf_hz = max(FREQ_MIN, min(FREQ_MAX, target_lpf_hz));
+  target_spread_pct = max(0, min(100, target_spread_pct));
+
+  // Update sliders to reflect gmem values (visual feedback)
+  // Convert Hz back to normalized 0-1 for HPF/LPF sliders
+  slider1 = target_volume_db;
+  slider2 = log(target_hpf_hz / FREQ_MIN) / log(FREQ_RATIO);  // Hz to normalized
+  slider3 = log(target_lpf_hz / FREQ_MIN) / log(FREQ_RATIO);  // Hz to normalized
+  slider4 = target_spread_pct;
+
+  // Also sync distance slider from Lua (prevents echo by setting flag)
+  new_distance = gmem[GMEM_DISTANCE];
+  new_distance != last_distance ? (
+    distance_from_lua = 1;  // Flag to prevent writing back to gmem in @slider
+    slider5 = new_distance;
+    last_distance = new_distance;
+  );
+
+  // Clear dirty flag
+  gmem[GMEM_DIRTY] = 0;
+  last_dirty = 0;
+) : (
+  last_dirty = gmem_dirty;
+);
+
+// Pre-compute filter coefficients for this block
+// These use the current smoothed values, which get updated per-sample
+
+// 1-pole HPF coefficient
+// HPF: y[n] = x[n] - z1; z1 += y[n] * (1 - alpha)
+// alpha = 1 / (1 + omega), where omega = 2*pi*fc/srate
+hpf_omega = TWO_PI * smooth_hpf_hz / srate;
+hpf_alpha = 1.0 / (1.0 + hpf_omega);
+
+// 1-pole LPF coefficient
+// LPF: z1 += (x[n] - z1) * alpha; y[n] = z1
+// alpha = omega / (1 + omega)
+lpf_omega = TWO_PI * smooth_lpf_hz / srate;
+lpf_alpha = lpf_omega / (1.0 + lpf_omega);
+
+@sample
+// ============================================================================
+// SAMPLE PROCESSING
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// 1. Parameter smoothing (exponential approach to target)
+// ----------------------------------------------------------------------------
+// Smooth all parameters to prevent clicks/zippers during changes
+smooth_volume_db += (target_volume_db - smooth_volume_db) * smooth_coeff;
+smooth_hpf_hz += (target_hpf_hz - smooth_hpf_hz) * smooth_coeff;
+smooth_lpf_hz += (target_lpf_hz - smooth_lpf_hz) * smooth_coeff;
+smooth_spread_pct += (target_spread_pct - smooth_spread_pct) * smooth_coeff;
+
+// ----------------------------------------------------------------------------
+// 2. Volume attenuation
+// ----------------------------------------------------------------------------
+// Convert dB to linear gain: gain = 10^(dB/20) = exp(dB * log(10)/20)
+gain = exp(smooth_volume_db * DB2LOG);
+
+// Apply gain to both channels
+spl0 *= gain;
+spl1 *= gain;
+
+// ----------------------------------------------------------------------------
+// 3. High-pass filter (1-pole)
+// ----------------------------------------------------------------------------
+// Recalculate coefficient with smoothed frequency (per-sample for smooth sweeps)
+hpf_omega = TWO_PI * smooth_hpf_hz / srate;
+hpf_coeff = 1.0 / (1.0 + hpf_omega);
+
+// Process left channel
+hpf_out_l = spl0 - hpf_z1_l;
+hpf_z1_l += hpf_out_l * (1.0 - hpf_coeff);
+
+// Process right channel
+hpf_out_r = spl1 - hpf_z1_r;
+hpf_z1_r += hpf_out_r * (1.0 - hpf_coeff);
+
+// Output
+spl0 = hpf_out_l;
+spl1 = hpf_out_r;
+
+// ----------------------------------------------------------------------------
+// 4. Low-pass filter (1-pole)
+// ----------------------------------------------------------------------------
+// Recalculate coefficient with smoothed frequency
+lpf_omega = TWO_PI * smooth_lpf_hz / srate;
+lpf_coeff = lpf_omega / (1.0 + lpf_omega);
+
+// Process left channel
+lpf_z1_l += (spl0 - lpf_z1_l) * lpf_coeff;
+
+// Process right channel
+lpf_z1_r += (spl1 - lpf_z1_r) * lpf_coeff;
+
+// Output
+spl0 = lpf_z1_l;
+spl1 = lpf_z1_r;
+
+// ----------------------------------------------------------------------------
+// 5. Stereo spread (Mid-Side processing)
+// ----------------------------------------------------------------------------
+// Convert spread percentage to factor (0.0 = mono, 1.0 = full stereo)
+spread_factor = smooth_spread_pct / 100.0;
+
+// Encode to Mid-Side
+mid = (spl0 + spl1) * 0.5;
+side = (spl0 - spl1) * 0.5;
+
+// Scale side signal by spread factor
+// At spread=0%, side=0 (mono)
+// At spread=100%, side unchanged (full stereo)
+side *= spread_factor;
+
+// Decode back to Left-Right
+spl0 = mid + side;
+spl1 = mid - side;
