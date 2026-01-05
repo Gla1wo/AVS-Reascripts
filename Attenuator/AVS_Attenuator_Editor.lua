@@ -1,7 +1,7 @@
 -- @description AVS_Attenuator_Editor - Distance-Based Attenuation Curve Editor
 -- @author AVS
 -- @version 7.2
--- @link Ko-fi.com/avscott
+-- @link https://ko-fi.com/avscott
 -- @about .
 -- =============================================================================
 -- AVS_Attenuator_Editor
