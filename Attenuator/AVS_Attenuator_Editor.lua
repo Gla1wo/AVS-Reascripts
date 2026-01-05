@@ -3,10 +3,10 @@
 -- @version 7.2
 -- @link Ko-fi.com/avscott
 -- @about 
--- =============================================================================
+-- ---------------------------------------------------------------------------
 -- AVS_Attenuator_Editor
 -- Game-Audio Focused Distance Attenuation Editor for REAPER
--- =============================================================================
+-- ---------------------------------------------------------------------------
 --
 -- AVS_Attenuator_Editor is a visual, distance-based attenuation editor for
 -- game-audio workflows inside REAPER. Inspired by
