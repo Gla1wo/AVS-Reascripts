@@ -2,7 +2,7 @@
 -- @author AVS
 -- @version 7.2
 -- @link Ko-fi.com/avscott
--- @about
+-- @about 
 -- =============================================================================
 -- AVS_Attenuator_Editor
 -- Game-Audio Focused Distance Attenuation Editor for REAPER
@@ -60,7 +60,7 @@
 -- The JSFX can be placed on tracks, the master track, or the monitor FX chain.
 --
 -- =============================================================================
-
+--
 
 -- Check for ReaImGui
 local reaimgui_installed = reaper.APIExists("ImGui_CreateContext")
