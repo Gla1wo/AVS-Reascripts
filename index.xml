@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="AVS-Reascripts" commit="ac935f18aaf7ec066969836a9202eedc57a78e2f">
+<index version="1" name="AVS-Reascripts" commit="acc3052509a49fa01caa0a391752fc06fd28066c">
   <category name="Arrange">
     <reapack name="AVS_Move to random item on selected track.lua" type="script" desc="Move playback instantly to a random item on the selected track">
       <metadata>
@@ -58,6 +58,30 @@
       <version name="1.0" author="AVS" time="2025-03-13T19:04:15Z">
         <changelog><![CDATA[Initial release]]></changelog>
         <source main="main">https://github.com/Gla1wo/AVS-Reascripts/raw/70752479567c50167cfacd023a0a8fad7c1a774a/Arrange/AVS_Zoom%20to%20all%20items%20on%20selected%20track.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="Attenuator/effects">
+    <reapack name="AVS_Attenuator.jsfx" type="effect" desc="AVS_Attenuator - Distance-Based Spatial DSP">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 AVS_Attenuator\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Distance-based attenuation processor for game audio prototyping. Receives parameters from companion Lua UI via gmem shared memory.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Parameters:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Volume attenuation (dB)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab High-pass filter cutoff (Hz)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Low-pass filter cutoff (Hz)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Stereo spread (%)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Custom 1-8: Link slots for driving arbitrary FX parameters via REAPER parameter linking\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Can also be controlled manually via sliders when UI is not running.\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.3" author="AVS" time="2026-01-05T04:37:15Z">
+        <source>https://github.com/Gla1wo/AVS-Reascripts/raw/acc3052509a49fa01caa0a391752fc06fd28066c/Attenuator/effects/AVS_Attenuator.jsfx</source>
       </version>
     </reapack>
   </category>
@@ -372,10 +396,10 @@ ReaPack REAPER extension
 {\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 ReaPack Installation\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Copy and paste the following URL in Extensions > ReaPack > Import a Repository: https://raw.githubusercontent.com/Gla1wo/AVS-Reascripts/refs/heads/master/index.xml\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Included Scripts\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Playback\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\i Playback}\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Play skipping silence on selected track\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Play through items on selected track skipping silence\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Items\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\i Items}\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Adjust item rate by 0.1 maintaining overlaps (mousewheel)\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Duplicate selected items and their tracks\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Expand item edge closest to mouse cursor to source content\par}
@@ -384,18 +408,21 @@ ReaPack REAPER extension
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Match item length to first item\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Shift source content start to item left edge\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Edit cursor follows items when selecting or dragging bottom half\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Envelopes\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\i Envelopes}\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Add envelope points to top and tail of first selected item\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Copy first item envelopes to all subsequent selected items\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Add envelope points to top and tail of selected items\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Convert envelopes under selected items to automation items\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Clear pitch envelope for selected items\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Arrange\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\i Arrange}\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Move to random item on selected track\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Zoom to all items on selected track\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Prevent micro time selections, extending 5s\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Modulation\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\i Modulation}\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 AVS_Enable envelope following for last touched fx parameter\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\i Attenuator}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Attenuator\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 AVS_Attenuator_Editor\par}
 }
 ]]></description>
   </metadata>
