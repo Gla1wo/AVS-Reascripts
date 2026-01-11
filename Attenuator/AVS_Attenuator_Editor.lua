@@ -621,6 +621,7 @@ local function avs_state_to_preset_data(src_state)
   local data = {
     curves = {},
     current_distance = src_state.current_distance or 10.0,
+    display_max_distance = src_state.display_max_distance or 100.0,
     curve_visible = {},
     curve_enabled = {},
     -- Include base attenuation values (default to unattenuated reference values)
@@ -678,6 +679,11 @@ local function avs_apply_preset_data_to_state(dst_state, preset_data)
   -- Apply current_distance
   if preset_data.current_distance then
     dst_state.current_distance = preset_data.current_distance
+  end
+
+  -- Apply display_max_distance
+  if preset_data.display_max_distance then
+    dst_state.display_max_distance = preset_data.display_max_distance
   end
 
   -- Apply curve visibility
@@ -1016,9 +1022,48 @@ local function avs_presets_ui(ctx, app_state)
 
   if ImGui.BeginCombo(ctx, "##preset_combo", current_display) then
     -- Save action at top
-    if ImGui.Selectable(ctx, "Save current as preset...", false) then
+    if ImGui.Selectable(ctx, "Save as preset...", false) then
       preset_ui.save_popup_open = true
       preset_ui.save_name_buffer = ''
+    end
+
+    -- Overwrite current preset (only for user presets)
+    local current_user_preset = nil
+    if preset_ui.selected_name then
+      for _, p in ipairs(preset_ui.catalog) do
+        if p.name == preset_ui.selected_name and p.source == 'user' then
+          current_user_preset = p
+          break
+        end
+      end
+    end
+
+    if not current_user_preset then
+      ImGui.BeginDisabled(ctx)
+    end
+    if ImGui.Selectable(ctx, "Overwrite current preset", false) then
+      if current_user_preset and current_user_preset.path then
+        -- Create updated preset data
+        local preset_data = avs_state_to_preset_data(app_state)
+        local payload = {
+          schema = PRESET_SCHEMA_VERSION,
+          name = current_user_preset.name,
+          created_utc = os.time(),
+          data = preset_data
+        }
+        local json_str = json.encode(payload, { pretty = true })
+        if json_str then
+          local f = io.open(current_user_preset.path, 'w')
+          if f then
+            f:write(json_str)
+            f:close()
+            preset_ui.catalog_dirty = true
+          end
+        end
+      end
+    end
+    if not current_user_preset then
+      ImGui.EndDisabled(ctx)
     end
 
     ImGui.Separator(ctx)
@@ -3534,7 +3579,7 @@ local function draw_toolbar()
         ImGui.Text(state.ctx, "Parameter: " .. (param.name_full or param.name_short or "Unknown"))
         ImGui.Text(state.ctx, "FX: " .. (param.fx_name or "Unknown"))
         ImGui.Text(state.ctx, "Track: " .. (param.track_name or "Unknown"))
-        ImGui.TextColored(state.ctx, COLORS.text_dim, "Slot: Custom " .. param.jsfx_slot)
+        ImGui.TextColored(state.ctx, COLORS.text_dim, "Slot: Custom " .. (param.jsfx_slot or "?"))
         if not param.resolved then
           ImGui.TextColored(state.ctx, 0xFF6666FF, "Status: Target FX not found")
         elseif param.enabled == false then
