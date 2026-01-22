@@ -37,6 +37,8 @@ AVS_Shift source content start to item left edge
 
 AVS_Edit cursor follows items when selecting or dragging bottom half
 
+AVS_Set fade curve to mouse cursor
+
 
 **Envelopes**
 
@@ -72,3 +74,5 @@ AVS_Enable envelope following for last touched fx parameter
 AVS_Attenuator
 
 AVS_Attenuator_Editor
+
+AVS_Toggle Attenuator JSFX Bypass
